@@ -1,3 +1,4 @@
+//this program have some problem ,I set 0 to exit procedure.using string is better.
 #include <stdio.h>
 #include <time.h>
 int main()
