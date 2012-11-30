@@ -84,11 +84,12 @@ int main()
   while (n/10>=0)
   {
 	  m=n%10;
-	  printf("the digt is %d \n",m);
+	  
 	  if (n==0)
 	  {
 		return 0;
 	  }
+	  printf("the digt is %d \n",m);
 	  n=n/10;
   }
   return 0;
