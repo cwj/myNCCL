@@ -94,13 +94,13 @@ int main()
   }
   return 0;
 }
-/*inpute you own nuber: 
+/*inpute you own number: 
 2912020
-the digt is 0 
-the digt is 2 
-the digt is 0 
-the digt is 2 
-the digt is 1 
-the digt is 9 
-the digt is 2 
+the digit is 0 
+the digit is 2 
+the digit is 0 
+the digit is 2 
+the digit is 1 
+the digit is 9 
+the digit is 2 
 */
