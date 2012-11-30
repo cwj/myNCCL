@@ -79,7 +79,7 @@ the sum is 55
 int main()
 {int n=10;
   int m=0;
-  printf("inpute you own nuber: \n");
+  printf("inpute you own number: \n");
   scanf("%d",&n);
   while (n/10>=0)
   {
@@ -89,7 +89,7 @@ int main()
 	  {
 		return 0;
 	  }
-	  printf("the digt is %d \n",m);
+	  printf("the digit is %d \n",m);
 	  n=n/10;
   }
   return 0;
