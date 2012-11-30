@@ -94,3 +94,13 @@ int main()
   }
   return 0;
 }
+/*inpute you own nuber: 
+2912020
+the digt is 0 
+the digt is 2 
+the digt is 0 
+the digt is 2 
+the digt is 1 
+the digt is 9 
+the digt is 2 
+*/
