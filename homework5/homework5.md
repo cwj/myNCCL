@@ -1,3 +1,4 @@
+##homework5
 //one:print average number. 
 #include <stdio.h>
 
