@@ -3,27 +3,27 @@
 
 int main()
 {
-	int a[4];
-	int i;
-	int sum=0;
-	float average;
+    int a[4];
+    int i;
+    int sum=0;
+    float average;
 
-	printf("input five number");
+    printf("input five number");
 
     for (i=0;i<5 ;i++ )
     {
-		scanf("%d",&a[i]);
+	scanf("%d",&a[i]);
     }
 
-	for (i=0;i<5 ;i++ )
-	{
-		sum=sum+a[i];
-	}
+    for (i=0;i<5 ;i++ )
+    {
+	sum=sum+a[i];
+    }
 	
-	average=sum/5;
-	printf("the average is %f \n",average);
+    average=sum/5;
+    printf("the average is %f \n",average);
 	
-	return 0;
+    return 0;
 }
 
 
@@ -32,32 +32,32 @@ int main()
 
 int main()
 {
-	int a[4];
-	int i;
-	int sum=0;
+    int a[4];
+    int i;
+    int sum=0;
 	
 
-	printf("input five number");
+    printf("input five number");
 
     for (i=0;i<5 ;i++ )
     {
-		scanf("%d",a[i]);
+	scanf("%d",a[i]);
     }
 
-	sum=a[0];
+    sum=a[0];
 
-	for (i=1;i<5 ;i++ )
+    for (i=1;i<5 ;i++ )
+    {
+	if (a[i]>sum)
 	{
-		if (a[i]>sum)
-		{
-			sum=a[i];
-		}
+	    sum=a[i];
 	}
+    }
 	
 	
-	printf("the max is %d",sum);
+    printf("the max is %d",sum);
 	
-	return 0;
+    return 0;
 }
 
 //three:print the November
@@ -66,44 +66,43 @@ int main()
 
 int main()
 {
-	int i;
+    int i;
 	/*
     for (i=0;i<7 ;i++ )
     {
 		switch (i)
 		{
-		case 0:printf("ÈÕ "); break;
-		case 1:printf("Áù "); break;
-		case 2:printf("Îå "); break;
-		case 3:printf("ËÄ "); break;
-		case 4:printf("Èı "); break;
-		case 5:printf("¶ş "); break;
+		case 0:printf("ï¿½ï¿½ "); break;
+		case 1:printf("ï¿½ï¿½ "); break;
+		case 2:printf("ï¿½ï¿½ "); break;
+		case 3:printf("ï¿½ï¿½ "); break;
+		case 4:printf("ï¿½ï¿½ "); break;
+		case 5:printf("ï¿½ï¿½ "); break;
 		case 6:printf("Ò» "); break;
 		default:break;
 		}
     }
 	printf("\n");
 	*/
-	printf("ÈÕ Áù Îå ËÄ Èı ¶ş Ò»\n");
-
-	for (i=1;i<=34 ;i++ )
+    printf("ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ Ò»\n");
+    for (i=1;i<=34 ;i++ )
 	{
-		if (i<=4)
-		{
-			printf("   ");
+	    if (i<=4)
+	        {
+		  printf("   ");
 		}
 
-		else if (i<14)
+	    else if (i<14)
 		{
-			printf("%d  ",i-4);
+		  printf("%d  ",i-4);
 		}
-		else
+	   else
             printf("%d ",i-4);
 
-		if (i%7==0)
-		{
-			printf("\n");
-		}
+	   if (i%7==0)
+	       {
+		printf("\n");
+	       }
 
 	}
 	
@@ -112,7 +111,7 @@ int main()
 }
 
 /*
-ÈÕ Áù Îå ËÄ Èı ¶ş Ò» 
+ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ Ò» 
             1  2  3  
 4  5  6  7  8  9  10 
 11 12 13 14 15 16 17 
@@ -146,7 +145,7 @@ int main()
 	return 0;
 }
 
-//½«ÎÄ±¾ÖĞº¬ÓĞdebug×Ö·û´®µÄĞĞÇ°¼ÓÉÏ//
+//ï¿½ï¿½ï¿½Ä±ï¿½ï¿½Ğºï¿½ï¿½ï¿½debugï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½//
 sed -i '/debug/s/^/\/\/&/g' homework5.c 
-//½«ÎÄ±¾ÖĞº¬ÓĞdebug×Ö·û´®µÄĞĞÇ°//È¥µô
+//ï¿½ï¿½ï¿½Ä±ï¿½ï¿½Ğºï¿½ï¿½ï¿½debugï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ç°//È¥ï¿½ï¿½
 sed -i '/debug/s/\/\///g' homework5.c
