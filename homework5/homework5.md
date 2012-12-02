@@ -73,18 +73,19 @@ int main()
     {
 		switch (i)
 		{
-		case 0:printf("ÈÕ "); break;
-		case 1:printf("Áù "); break;
-		case 2:printf("Îå "); break;
-		case 3:printf("ËÄ "); break;
-		case 4:printf("Èý "); break;
-		case 5:printf("¶þ "); break;
+		case 0:printf("ï¿½ï¿½ "); break;
+		case 1:printf("ï¿½ï¿½ "); break;
+		case 2:printf("ï¿½ï¿½ "); break;
+		case 3:printf("ï¿½ï¿½ "); break;
+		case 4:printf("ï¿½ï¿½ "); break;
+		case 5:printf("ï¿½ï¿½ "); break;
 		case 6:printf("Ò» "); break;
 		default:break;
 		}
     }
     printf("\n");
 	*/
+<<<<<<< HEAD:homework5/homework5.md
     printf("ÈÕ Áù Îå ËÄ Èý ¶þ Ò»\n");
 
     for (i=1;i<=34 ;i++ )
@@ -100,6 +101,27 @@ int main()
 	}
 	else
                 printf("%d ",i-4);
+=======
+    printf("ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ Ò»\n");
+    for (i=1;i<=34 ;i++ )
+	{
+	    if (i<=4)
+	        {
+		  printf("   ");
+		}
+
+	    else if (i<14)
+		{
+		  printf("%d  ",i-4);
+		}
+	   else
+            printf("%d ",i-4);
+
+	   if (i%7==0)
+	       {
+		printf("\n");
+	       }
+>>>>>>> e8a61d3b9ff65f3c26c046c249ec6032514226a8:homework5/homework5.c
 
 	if (i%7==0)
 	{
@@ -113,7 +135,7 @@ int main()
 }
 
 /*
-ÈÕ Áù Îå ËÄ Èý ¶þ Ò» 
+ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ Ò» 
             1  2  3  
 4  5  6  7  8  9  10 
 11 12 13 14 15 16 17 
@@ -147,7 +169,7 @@ int main()
 	return 0;
 }
 
-//½«ÎÄ±¾ÖÐº¬ÓÐdebug×Ö·û´®µÄÐÐÇ°¼ÓÉÏ//
+//ï¿½ï¿½ï¿½Ä±ï¿½ï¿½Ðºï¿½ï¿½ï¿½debugï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½//
 sed -i '/debug/s/^/\/\/&/g' homework5.c 
-//½«ÎÄ±¾ÖÐº¬ÓÐdebug×Ö·û´®µÄÐÐÇ°//È¥µô
+//ï¿½ï¿½ï¿½Ä±ï¿½ï¿½Ðºï¿½ï¿½ï¿½debugï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ç°//È¥ï¿½ï¿½
 sed -i '/debug/s/\/\///g' homework5.c
