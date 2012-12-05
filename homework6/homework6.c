@@ -286,7 +286,7 @@ int main()
 		{
 			if (a[i][j]==1)
 			{
-				printf("%d",a[i][j]);
+				printf("%d ",a[i][j]);
 			}
 		}
 		printf("\n");
@@ -300,9 +300,9 @@ int main()
 the two number must small than 4:
 2
 3
-01010
-00111
-11101
-00111
-01010
+0 1 0 1 0
+0 0 1 1 1
+1 1 1 0 1
+0 0 1 1 1
+0 1 0 1 0
 */
