@@ -1,0 +1,238 @@
+#include <stdio.h>
+
+#define ALL_NUM     100
+#define COUNT_NUM   3
+#define OUT_NUM     3
+
+/* people id array such as (1,2,3,4,5,6) */
+int people[ALL_NUM];
+
+int main(void)
+{
+    int left;   /* left people number */
+    int pos;    /* which pos */
+    int step;   /* which step */
+    int i;
+	int count=0;
+
+    int counter = 0;
+
+    left = ALL_NUM;
+    pos = 0;
+    step = 0;
+
+    /* init id as 1,2,3,4,5,6 */
+    for (i = 0; i < ALL_NUM; i++)
+        people[i] = i + 1;
+
+    /* if there is still people in queue */
+    while (left > 0)
+    {
+        /* pos++?  step++?   left--? */
+        if (people[pos] > 0)
+            step++;
+
+		count++;
+
+        if (step == OUT_NUM && people[pos] != 0)
+        {
+            printf("%d out \n", people[pos]);
+            people[pos] = 0;
+            left--;
+			count=count+2;
+        }
+		else if (step == OUT_NUM && people[pos] ==0)
+		{
+			count++;
+		}
+		else if (step != OUT_NUM)
+		{
+			count++;
+		}
+
+
+    #if 1
+        pos = ++pos % ALL_NUM;
+        step = step % COUNT_NUM;
+    #else   
+        pos++;
+        if (pos == ALL_NUM)
+            pos = 0;
+
+        if (step == COUNT_NUM)
+            step = 0;
+    #endif
+    }
+
+	printf("%d",count);
+
+    return 0;
+}
+
+
+//已知2012年1月1日是星期日，请打印出全年的月历。要求用到函数，数组和循环。
+#include <stdio.h>
+
+int main(void)
+{
+	int a[12]={31,29,31,30,31,30,31,31,30,31,30,31};
+	int i,j,step,k;
+	
+	for (j=0 ;j<7 ;j++ )
+		{
+			printf("wk%d\t",j);
+		}
+
+	printf("\n");
+
+	step=0;
+	for (k=0 ;k<12 ;k++ )
+	{
+		printf("this is %d month\n",k+1);
+
+		for (i=1 ;i<=step%7 ;i++ )
+		{
+			
+			printf("  \t");
+		}
+		
+		for (j=1 ;j<=a[k] ;j++ )
+		{
+			if (step%7==0)
+			{
+				printf("\n");
+			}
+			printf("%d\t",j);
+			step++;
+		}
+
+		printf("\n");
+		
+		
+	}
+		
+	return 0;
+}
+
+/*
+wk0	wk1	wk2	wk3	wk4	wk5	wk6	
+this is 1 month
+
+1	2	3	4	5	6	7	
+8	9	10	11	12	13	14	
+15	16	17	18	19	20	21	
+22	23	24	25	26	27	28	
+29	30	31	
+this is 2 month
+  	  	  	1	2	3	4	
+5	6	7	8	9	10	11	
+12	13	14	15	16	17	18	
+19	20	21	22	23	24	25	
+26	27	28	29	
+this is 3 month
+  	  	  	  	1	2	3	
+4	5	6	7	8	9	10	
+11	12	13	14	15	16	17	
+18	19	20	21	22	23	24	
+25	26	27	28	29	30	31	
+this is 4 month
+
+1	2	3	4	5	6	7	
+8	9	10	11	12	13	14	
+15	16	17	18	19	20	21	
+22	23	24	25	26	27	28	
+29	30	
+this is 5 month
+  	  	1	2	3	4	5	
+6	7	8	9	10	11	12	
+13	14	15	16	17	18	19	
+20	21	22	23	24	25	26	
+27	28	29	30	31	
+this is 6 month
+  	  	  	  	  	1	2	
+3	4	5	6	7	8	9	
+10	11	12	13	14	15	16	
+17	18	19	20	21	22	23	
+24	25	26	27	28	29	30	
+this is 7 month
+
+1	2	3	4	5	6	7	
+8	9	10	11	12	13	14	
+15	16	17	18	19	20	21	
+22	23	24	25	26	27	28	
+29	30	31	
+this is 8 month
+  	  	  	1	2	3	4	
+5	6	7	8	9	10	11	
+12	13	14	15	16	17	18	
+19	20	21	22	23	24	25	
+26	27	28	29	30	31	
+this is 9 month
+  	  	  	  	  	  	1	
+2	3	4	5	6	7	8	
+9	10	11	12	13	14	15	
+16	17	18	19	20	21	22	
+23	24	25	26	27	28	29	
+30	
+this is 10 month
+  	1	2	3	4	5	6	
+7	8	9	10	11	12	13	
+14	15	16	17	18	19	20	
+21	22	23	24	25	26	27	
+28	29	30	31	
+this is 11 month
+  	  	  	  	1	2	3	
+4	5	6	7	8	9	10	
+11	12	13	14	15	16	17	
+18	19	20	21	22	23	24	
+25	26	27	28	29	30	
+this is 12 month
+  	  	  	  	  	  	1	
+2	3	4	5	6	7	8	
+9	10	11	12	13	14	15	
+16	17	18	19	20	21	22	
+23	24	25	26	27	28	29	
+30	31	
+*/
+
+//用户输入10个数字，对它们进行排序，要求把所有奇数排前面，所有偶数排后面。
+
+#include <stdio.h>
+
+int main(void)
+{
+	int a[10]={1,2,7,4,3,8,9,3,4,6};
+	int i,j;
+
+	/*for (i=0 ;i<10 ;i++ )
+	{
+		scanf("%d",&a[i]);
+	}*/
+
+	for (i=0 ;i<10 ;i++ )
+	{
+		if (a[i]%2==0)
+		{
+			for (j=i ;j<10 ;j++ )
+			{
+				if (a[j]%2!=0)
+				{
+					a[i]=a[i]+a[j];
+					a[j]=a[i]-a[j];
+					a[i]=a[i]-a[j];
+					break;
+				}
+				
+			}
+		}
+	}
+
+	for (i=0 ;i<10 ;i++ )
+	{
+		printf("%d",a[i]);
+	}
+			
+	return 0;
+}
+
+//1739384246
