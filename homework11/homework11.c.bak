@@ -11,26 +11,28 @@ struct point
     int y;
 };
 
-typedef struct point point_t[5];
+typedef struct point point_t;
 
-int calc_distance(point_t p1)
+double calc_distance(point_t p1)
 {
-	return sqrt(p1.x*p1.x+p1.y+p1.y);
+	return sqrt((p1.x)*(p1.x)+(p1.y)+(p1.y));
 }
 
 int main()
 {
-	int i,j
+	int i,j;
 	double 	distance,max_distance;
+
 	for (i=0 ;i<5 ;i++ )
 	{
-		scanf("%d,%d",&point_t[i].x,&point_t[i].y);
+		scanf("%d,%d",&(point_t[i].x),&(point_t[i].y));
 	}
 	
 	max_distance=0;
-	for (i=0 ;i<5 ;ii++ )
+	for (i=0 ;i<5 ;i++ )
 	{
 		distance=calc_distance(point_t[i]);
+
 		if (distance>max_distance)
 		{
 			max_distance=distance;
