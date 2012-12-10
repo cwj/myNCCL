@@ -34,6 +34,10 @@ int main(void)
 			step++;
 			count++;
 		}
+		if (people[pos] <= 0)
+		{
+			count++;
+		}
 
         if (step == OUT_NUM && people[pos] != 0)
         {
@@ -44,7 +48,7 @@ int main(void)
         }
 		else if (step == OUT_NUM && people[pos] ==0)
 		{
-			count++;
+			count=count+2;
 		}
 		else if (step != OUT_NUM)
 		{
@@ -71,7 +75,7 @@ int main(void)
     return 0;
 }
 
-//2982
+//3973
 
 //已知2012年1月1日是星期日，请打印出全年的月历。要求用到函数，数组和循环。
 #include <stdio.h>
