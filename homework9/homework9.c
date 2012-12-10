@@ -65,37 +65,34 @@ void reverser(char sum[],int i)
 void subtraction(char big[],int i,char small[],int j)
 {
 	char sub[100];
-    int k=0,m;
+  int k=0,m;
 	//printf("%s\n,%s",big,small);
 	while (i>0)
-    {
+  {
 		if(j>0)
-           {
-			//if(small[j-1]>'0' && small[j-1]<'9')
-             m=big[i-1]-'0'-(small[j-1]-'0');
-			//else
-			//m=big[i-1]-'0';
-                if (m<0 && i-1>=0)
-                {
-                        big[i-1]=big[i-1]-1;
-                        m=small[j-1]-'0'-(big[i-1]-'0');
-                }
+       {
+          m=big[i-1]-'0'-(small[j-1]-'0');
+          if (m<0 && i-1>=0)
+             {
+                 big[i-1]=big[i-1]-1;
+                 m=small[j-1]-'0'-(big[i-1]-'0');
+             }
 
-                sub[k++]=m+'0';
-                i--;
-                j--;
-            }
-         else
-            {
-                m=big[i-1]-'0';
-                sub[k++]=m+'0';
-                i--;
-            }
-     }
-     sub[k]='\0';
+             sub[k++]=m+'0';
+             i--;
+             j--;
+        }
+    else
+        {
+             m=big[i-1]-'0';
+             sub[k++]=m+'0';
+             i--;
+        }
+  }
+  sub[k]='\0';
 
-     reverser(sub,k);
-     printf("two string number subtraction = %s\n", sub);
+  reverser(sub,k);
+  printf("two string number subtraction = %s\n", sub);
 
 }
 
@@ -105,42 +102,44 @@ void subtraction(char big[],int i,char small[],int j)
 
 void add(char numone[],int i,char numtwo[],int j)
 {
-        int n,k,m;
-        char sum[100];
-        k=0;
-        while (i>0 || j>0)
-        {
-        	if (i<=0)
-               {
-					i=1;
-					numone[i-1]='0';//在这里发生了变化
-               }
+    int n,k,m;
+    char sum[100];
+    
+    k=0;
+    
+    while (i>0 || j>0)
+    {
+    	if (i<=0)
+           {
+							i=1;
+							numone[i-1]='0';//在这里发生了变化
+           }
 			if(j<=0)
-			   {
-					j=1;
-					numtwo[j-1]='0';
-			   }
+		 			{
+						j=1;
+						numtwo[j-1]='0';
+		 			}
 
-            m=numone[i-1]-'0'+numtwo[j-1]-'0';
+      m=numone[i-1]-'0'+numtwo[j-1]-'0';
 
-            if (m>9)
-                {
-                        n=1;
-                        m=m%10;
-                }
-                else
-                        n=0;
+      if (m>9)
+          {
+             n=1;
+             m=m%10;
+          }
+      else
+          n=0;
 
-             sum[k]=m+n+'0';
-             k=k+1;
-             i--;
-             j--;
-        }
+      sum[k]=m+n+'0';
+      k=k+1;
+      i--;
+      j--;
+    }
 
-        sum[k]='\0';
+    sum[k]='\0';
 
-        reverser(sum,k);
-        printf("two string number add = %s\n", sum);
+    reverser(sum,k);
+    printf("two string number add = %s\n", sum);
 }
 
 
@@ -174,8 +173,8 @@ int main()
         }
         else if (i=j)
         {
-			ai=i;
-			bj=j;
+			      ai=i;
+			      bj=j;
             while (i>=0)
             {
                 if (a[i]-'0'>b[j]-'0')
