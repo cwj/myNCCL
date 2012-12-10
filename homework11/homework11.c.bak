@@ -70,7 +70,7 @@ int main()
 	double 	distance,max_distance;
 	for (i=0 ;i<5 ;i++ )
 	{
-		scanf("%d,%d",&point_t[i].x,&point_t[i].y);
+		scanf("%d,%d",&(point_t[i].x),&(point_t[i].y));
 	}
 	
 	max_distance=0;
