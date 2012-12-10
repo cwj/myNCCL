@@ -65,14 +65,14 @@ void reverser(char sum[],int i)
 void subtraction(char big[],int i,char small[],int j)
 {
 	char sub[100];
-  int k=0,m;
+    int k=0,m;
 	//printf("%s\n,%s",big,small);
 	while (i>0)
-  {
-		if(j>0)
        {
-          m=big[i-1]-'0'-(small[j-1]-'0');
-          if (m<0 && i-1>=0)
+		if(j>0)
+          {
+            m=big[i-1]-'0'-(small[j-1]-'0');
+            if (m<0 && i-1>=0)
              {
                  big[i-1]=big[i-1]-1;
                  m=small[j-1]-'0'-(big[i-1]-'0');
@@ -81,13 +81,13 @@ void subtraction(char big[],int i,char small[],int j)
              sub[k++]=m+'0';
              i--;
              j--;
-        }
-    else
-        {
+          }
+        else
+          {
              m=big[i-1]-'0';
              sub[k++]=m+'0';
              i--;
-        }
+          }
   }
   sub[k]='\0';
 
@@ -111,14 +111,14 @@ void add(char numone[],int i,char numtwo[],int j)
     {
     	if (i<=0)
            {
-							i=1;
-							numone[i-1]='0';//在这里发生了变化
+				i=1;
+				numone[i-1]='0';//在这里发生了变化
            }
-			if(j<=0)
-		 			{
-						j=1;
-						numtwo[j-1]='0';
-		 			}
+		if(j<=0)
+		   {
+				j=1;
+				numtwo[j-1]='0';
+		   }
 
       m=numone[i-1]-'0'+numtwo[j-1]-'0';
 
@@ -152,6 +152,7 @@ int main()
         printf("input two number ");
 
         scanf("%s",a);
+
         while(a[i]!='\0')
         {
                 i++;
