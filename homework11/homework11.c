@@ -55,7 +55,7 @@ struct point
 
 typedef struct point point_t[5];
 
-int calc_distance(point_t p1)
+int calc_distance(point p1)
 {
 	int dx = p1.x - p2.x;
     int dy = p1.y - p2.y;

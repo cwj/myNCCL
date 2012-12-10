@@ -13,7 +13,7 @@ struct point
 
 typedef struct point point_t;
 
-double calc_distance(point_t p1)
+double calc_distance(point p1)
 {
 	return sqrt((p1.x)*(p1.x)+(p1.y)+(p1.y));
 }
