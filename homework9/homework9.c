@@ -47,8 +47,9 @@ int main()
 //做字符串的反转
 void reverser(char sum[],int i)
 {
-		int len;
-		len = i;
+	int len;
+
+	len = i;
     for (i = 0; i < len/2; i++)
     {
         char tmp;
@@ -63,16 +64,17 @@ void reverser(char sum[],int i)
 //做2个数的减法
 void subtraction(char big[],int i,char small[],int j)
 {
-        char sub[100];
-        int k=0,m;
-			//printf("%s\n,%s",big,small);
-        while (i>0)
-        {if(j>0)
+	char sub[100];
+    int k=0,m;
+	//printf("%s\n,%s",big,small);
+	while (i>0)
+    {
+		if(j>0)
            {
-        //      if(small[j-1]>'0' && small[j-1]<'9')
-                   m=big[i-1]-'0'-(small[j-1]-'0');
-        //      else
-        //         m=big[i-1]-'0';
+			//if(small[j-1]>'0' && small[j-1]<'9')
+             m=big[i-1]-'0'-(small[j-1]-'0');
+			//else
+			//m=big[i-1]-'0';
                 if (m<0 && i-1>=0)
                 {
                         big[i-1]=big[i-1]-1;
@@ -89,11 +91,12 @@ void subtraction(char big[],int i,char small[],int j)
                 sub[k++]=m+'0';
                 i--;
             }
-        }
-        sub[k]='\0';
+     }
+     sub[k]='\0';
 
-        reverser(sub,k);
-        printf("two string number subtraction = %s\n", sub);
+     reverser(sub,k);
+     printf("two string number subtraction = %s\n", sub);
+
 }
 
 
@@ -108,15 +111,19 @@ void add(char numone[],int i,char numtwo[],int j)
         while (i>0 || j>0)
         {
         	if (i<=0)
-             {i=1;
-              numone[i-1]='0';//在这里发生了变化
-             }
-          if(j<=0)
-				     {j=1;
-					    numtwo[j-1]='0';
-				     }
-          m=numone[i-1]-'0'+numtwo[j-1]-'0';
-          if (m>9)
+               {
+					i=1;
+					numone[i-1]='0';//在这里发生了变化
+               }
+			if(j<=0)
+			   {
+					j=1;
+					numtwo[j-1]='0';
+			   }
+
+            m=numone[i-1]-'0'+numtwo[j-1]-'0';
+
+            if (m>9)
                 {
                         n=1;
                         m=m%10;
@@ -124,11 +131,12 @@ void add(char numone[],int i,char numtwo[],int j)
                 else
                         n=0;
 
-                sum[k]=m+n+'0';
-                k=k+1;
-                i--;
-                j--;
+             sum[k]=m+n+'0';
+             k=k+1;
+             i--;
+             j--;
         }
+
         sum[k]='\0';
 
         reverser(sum,k);
@@ -165,26 +173,27 @@ int main()
                 subtraction(b,j,a,i);
         }
         else if (i=j)
-        {ai=i;
-         bj=j;
-                while (i>=0)
-                {
-                        if (a[i]-'0'>b[j]-'0')
-                        {
-                                subtraction(a,ai,b,bj);
-                                break;
-                        }
-                        else
-                        {
-                                subtraction(b,bj,a,ai);
-                          break;
-                        }
-                        i--;
-                        j--;
-                }
+        {
+			ai=i;
+			bj=j;
+            while (i>=0)
+            {
+                if (a[i]-'0'>b[j]-'0')
+                   {
+                        subtraction(a,ai,b,bj);
+                        break;
+                   }
+                else
+                   {
+                        subtraction(b,bj,a,ai);
+                        break;
+                   }
+                i--;
+                j--;
+            }
         }
         
-	add(a,i,b,j);//在add函数这里对b数组里的数据变更了。
+	   add(a,i,b,j);//在add函数这里对b数组里的数据变更了。
 	
 
         return 0;
@@ -211,36 +220,48 @@ two string number add = 34792
 
 int main()
 {
-	char str[40];
-	int i,j;
-	scanf("%s",str);
-	
-	printf("%s",str);
-	
-	
-	for (i=0,j=0 ;str[i]!='\0' ;i++ )
-	{
-		if (str[i]==' ')
-		{
-			j=i;
-			while (str[j]==' ')
-			{
-				j++;
-			}
+        char str[40];
+        int i,j,m,n;
 
-			while (str[i+j+1]!='\0')
-			{
-				str[i+1]=str[i+j+1];
-				i++;
-				j++;
-			}
-			str[i]='\0';
+        scanf("%s",str);
+        printf("%s\n",str);
 
-		}
 
-	}
+        for (i=0,j=0 ;str[i]!='\0' ;i++ )
+        {
+                if (str[i]=='_')
+                {
+                        j=i;
+                        m=i;
+                        n=0;
+                        while (str[j]=='_')
+                        {
+                                j++;
+                                n++;
+                        }
 
-	printf("%s",str);
+                        while (str[j]!='\0')
+                        {
+                                str[m+1]=str[j];
+                                m++;
+                                j++;
+                        }
+                str[j-n+1]='\0';
+                printf("debug information %s\n",str);
+                }
 
-	return 0;
+        }
+
+        printf("%s\n",str);
+
+        return 0;
 }
+/*
+[root@cem test]# ./a.out
+dwdw_______ssd__sd_sd
+dwdw_______ssd__sd_sd
+debug information dwdw_ssd__sd_sd
+debug information dwdw_ssd_sd_sd
+debug information dwdw_ssd_sd_sd
+dwdw_ssd_sd_sd
+/*
