@@ -11,17 +11,16 @@ struct point
     int y;
 };
 
-typedef struct point point_t;
-
 double calc_distance(point p1)
 {
-	return sqrt((p1.x)*(p1.x)+(p1.y)+(p1.y));
+	return sqrt((double)(p1.x)*(p1.x)+(p1.y)+(p1.y));
 }
 
-int main()
+int main(void)
 {
 	int i,j;
 	double 	distance,max_distance;
+	point point_t[5];
 
 	for (i=0 ;i<5 ;i++ )
 	{
@@ -53,7 +52,6 @@ struct point
 	int y;
 };
 
-typedef struct point point_t[5];
 
 int calc_distance(point p1)
 {
@@ -64,10 +62,12 @@ int calc_distance(point p1)
 
 }
 
-int main()
+int main(void)
 {
 	int i,j
 	double 	distance,max_distance;
+	point point_t[5];
+
 	for (i=0 ;i<5 ;i++ )
 	{
 		scanf("%d,%d",&(point_t[i].x),&(point_t[i].y));
@@ -109,18 +109,17 @@ struct student
 
 };
 
-typedef struct student student_t[5];
-
 void cal_allscore (student p1)
 {
 	p1.allscore=p1.chinese+p1.math+p1.english
 	p1.avgscore=(p1.chinese+p1.math+p1.english)/3;
 }
 
-int main()
+int main(void)
 {
 	int i,j,searchid;
 	char searchname[10];
+	student student_t[5];
 
 	for (i=0 ;i<5 ;i++ )
 	{
