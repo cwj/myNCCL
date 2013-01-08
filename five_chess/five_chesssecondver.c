@@ -1,11 +1,13 @@
+//http://wenku.baidu.com/view/f3020044336c1eb91a375d7d.html
 #include<stdio.h>
+//#include <unistd.h>
 
 int chessboard[15][15]={{0}};
 int right_point,left_point,up_point,down_point,right_down_point,right_up_point,left_down_point,left_up_point;
 int company_wight[15][15]={{0}};
-int pepole_weight[15][15]={{0}};
-int maxij[6]={0};
-int globle=0;
+//int pepole_weight[15][15]={{0}};
+//int maxij[10]={0};
+//int globle=0;
 
 void printf_chessboard()
 {
@@ -250,64 +252,38 @@ int check_down(int down_check[15][15],int i,int j,int k)
 	return counter;	
 }
 
-int calculate(int one_direction,int second_diection,int one_direction_score,int two_direction_score,int howmany)
+int calculate(int one_direction,int second_diection,int one_direction_score,int two_direction_score)
 {
 	if(one_direction+second_diection>=4)
-		{
-			return 100000/howmany;//成5
-		}
-	else if(one_direction+second_diection>=3)
+		return 200;//成5
+	else if(one_direction+second_diection==3)
 		{
 			if(one_direction_score==0 && two_direction_score==0)
-				{
-					return 20000/howmany;//活四
-				}
-			else if(one_direction_score==0 || two_direction_score==0 )
-				{
-					return 4000/howmany;
-				}
+				return 90;//活四
+			else if((one_direction_score==0 && two_direction_score!=0) || (two_direction_score==0 && one_direction_score!=0) )
+				return 15;//死四
 		}
-	else if(one_direction+second_diection>=2)
+	else if(one_direction+second_diection==2)
 		{
 			if(one_direction_score==0 && two_direction_score==0)
-				{
-					return 990/howmany;
-				}
-			else if(one_direction_score==0 || two_direction_score==0 )
-				{
-					return 200/howmany;
-				}
+				return 40;//活三				
+			else if((one_direction_score==0 && two_direction_score!=0) || (two_direction_score==0 && one_direction_score!=0) )
+				return 13;//死三
 		}
-	else if(one_direction+second_diection>=1)
+	else if(one_direction+second_diection==1)
 		{
 			if(one_direction_score==0 && two_direction_score==0)
-				{
-					return 50/howmany;
-				}
-			else if(one_direction_score==0 || two_direction_score==0 )
-				{
-					return 10/howmany;
-				}
+				return 8;//活二
+			else if((one_direction_score==0 && two_direction_score!=0) || (two_direction_score==0 && one_direction_score!=0))
+				return 2;//死二
 		}
 		
 	return 0;
 }
 
-int weight_chess(int find_chess[15][15],int i,int j,int whoplay,int howmany)
-//..........
+int weight_chess(int find_chess[15][15],int i,int j,int whoplay)
 {
-	/*.................
-	...........
-		1...   ..10000
-		1...   ..2000
-		2...   ..400
-		3...   ..99
-		4...   ..20
-		5...   ..5
-		6...   ..1
-	*/
 	int right,left,up,down,right_down,right_up,left_down,left_up;
-	//int four_direction[4];
 	int weight_all=0;
 	
 	
@@ -320,106 +296,101 @@ int weight_chess(int find_chess[15][15],int i,int j,int whoplay,int howmany)
 	right_up=check_rightup(find_chess,i,j,whoplay);
 	left_up=check_leftup(find_chess,i,j,whoplay);
 	
-	weight_all=weight_all+calculate(right,left,right_point,left_point,howmany);
-	weight_all=weight_all+calculate(up,down,up_point,down_point,howmany);
-	weight_all=weight_all+calculate(right_down,left_up,right_down_point,left_up_point,howmany);
-	weight_all=weight_all+calculate(right_up,left_down,right_up_point,left_down_point,howmany);
+	weight_all=weight_all+calculate(right,left,right_point,left_point);//此子横着的棋型得分
+	weight_all=weight_all+calculate(up,down,up_point,down_point);//此子竖线的棋型得分
+	weight_all=weight_all+calculate(right_down,left_up,right_down_point,left_up_point);//此子右上方棋型得分
+	weight_all=weight_all+calculate(right_up,left_down,right_up_point,left_down_point);//此子右下方棋型得分
 	
 	return weight_all;
 }
 
-void who_play(int analysis_chess[15][15],int whoplay,int howmany)
-//whoplay 1.....2.....
+void who_play(int analysis_chess[15][15])
 {
-	int i,j;	
+	int i,j;
+	int m,n;	
+	int ppwight,computerwight;
 	int max;
 	int maxi,maxj;
 	
-	if(whoplay==2)
-		{
-			max=company_wight[0][0];//........
+	    ppwight=0;
+			computerwight=0;
 			for(i=0;i<15;i++)
 			{
 				for(j=0;j<15;j++)
 					{
-						if(analysis_chess[i][j] != 1 && analysis_chess[i][j] != 2)
+						if(analysis_chess[i][j]==0)
 							{
-								//...............
-								company_wight[i][j]=company_wight[i][j]+weight_chess(analysis_chess,i,j,whoplay,howmany);
-								if(company_wight[i][j]>max)
+								analysis_chess[i][j]=2;
+								
+								ppwight=0;
+								computerwight=0;
+								//计算所有棋子的得分
+								for(m=0;m<15;m++)
+								{
+									for(n=0;n<15;n++)
 									{
-										max=company_wight[i][j];
-										maxi=i;
-										maxj=j;
+										if(analysis_chess[m][n] == 1 && analysis_chess[m-1][n]!=1 && analysis_chess[m][n-1] != 1 && analysis_chess[m-1][n-1] != 1)
+											{
+												ppwight=ppwight+weight_chess(analysis_chess,m,n,1);
+											}
+										if(analysis_chess[m][n] == 2&& analysis_chess[m-1][n]!=2 && analysis_chess[m][n-1] != 2 && analysis_chess[m-1][n-1] != 2)
+											{
+												computerwight=computerwight+weight_chess(analysis_chess,m,n,2);
+											}
 									}
-							}
+								}
+								analysis_chess[i][j]=0;
+								company_wight[i][j]=computerwight-ppwight;
+								printf("debug information i=%d,j=%d, company_wight[i][j]=%d\n",i,j,company_wight[i][j]);
+							}	
+						}		
 					}
-			}
-		}
-	else
-		{
-			max=pepole_weight[0][0];
-			for(i=0;i<15;i++)
-			{
-				for(j=0;j<15;j++)
+					
+					max=company_wight[0][0];
+					for(i=0;i<15;i++)
 					{
-						if(analysis_chess[i][j] != 1 && analysis_chess[i][j] != 2)
-							{
-								pepole_weight[i][j]=pepole_weight[i][j]+weight_chess(analysis_chess,i,j,whoplay,howmany);
-								if(pepole_weight[i][j]>max)
-									{
-										max=pepole_weight[i][j];
-										maxi=i;
-										maxj=j;
-									}
-							}
+						for(j=0;j<15;j++)
+						{
+							if(company_wight[i][j]>=max)
+								{
+									max=company_wight[i][j];
+									maxi=i;
+									maxj=j;
+								}
+						}
 					}
-			}
-		}
-
-	printf("debug information %d,%d han shu li de weizhi\n",maxi,maxj);	
-	analysis_chess[maxi][maxj]=whoplay;
-	maxij[globle++]=maxi;
-	maxij[globle++]=maxj;
-	
+					
+		analysis_chess[maxi][maxj]=2;	
 }
 
-main(void)
+int main(void)
 {
 	int i,j,k,who;
 	int total_count;
-	//int count=0;
 	int maxcompall,maxcompi,maxcompj,maxppall,maxppi,maxppj;
-	
-	chessboard[5][4]=1;
-	chessboard[4][4]=2;
+
+	chessboard[8][7]=1;
+	chessboard[8][6]=2;
 	printf_chessboard();
-	
-	
+
 	printf("who play the first chess ,1=pp,2=cpmputer");
 	scanf("%d",&who);
-	
+	printf("who= %d\n",who);
 	if(who==1)
-		//...
-		{
-			total_count=1;
-		}
+			total_count=3;
 	else
-		//....
-		{
 			total_count=2;
-		}
 	
+	printf("debug information %d,%d\n",total_count,total_count%2);
 	while(1)
 	{
 		if(total_count%2==1)
 		{
-			printf("pepole play:\n");
-			//......
-			printf("put the chess\n");	
+			printf("pepole play:\n");	
 			do
 			{
-				scanf("%d %d",&i,&j);
+				printf("pepole input\n");
+				scanf("%d %d",&i,&j);		
 			}while(chessboard[i][j]==1 || chessboard[i][j]==2);
 				
 			chessboard[i][j]=1;
@@ -428,120 +399,24 @@ main(void)
 			
 			if (whowin(chessboard,i,j,1)==1)
 			{
-				printf("pepole win");
+				printf("pepole win\n");
 				return 0;
 			}
 		}
 		else
 		{
 			printf("computer play\n");
-			//count=0;
-			//while(count<3)
-			//	{
-			globle=0;
-			who_play(chessboard,2,1);//.......,...1.........
-			//globle=globle+1;
-			who_play(chessboard,1,1);//...........1........
-			//globle=globle+1;
-			who_play(chessboard,2,2);//.......................
-			//		count++;				
-			//	}	
-
-			maxcompall=0;//...........
-			for(i=0;i<15;i++)
-			{
-				for(j=0;j<15;j++)
-				{
-					if(company_wight[i][j]>maxcompall)
-						{
-							maxcompall=company_wight[i][j];
-							maxcompi=i;
-							maxcompj=j;
-						}
-				}
-			}
-								
-			maxppall=0;//.............
-			for(i=0;i<15;i++)
-			{
-				for(j=0;j<15;j++)
-				{
-					if(pepole_weight[i][j]>maxppall)
-						{
-							maxppall=pepole_weight[i][j];
-							maxppi=i;
-							maxppj=j;
-						}
-				}
-			}
 			
-		//	printf("debug information comp %d,%d\n",maxcompi,maxcompj);	
-		//	printf("debug information pp   %d,%d\n",maxppi,maxppj);	
-			printf("debug information comp %d,%d\n",maxij[0],maxij[1]);	
-			printf("debug information pp   %d,%d\n",maxij[2],maxij[3]);
-			printf("debug information pp   %d,%d\n",maxij[4],maxij[5]);
-					
-			if(maxcompall>=100000)
-				{
-					chessboard[maxij[0]][maxij[1]]=0;
-					chessboard[maxij[2]][maxij[3]]=0;
-					chessboard[maxij[4]][maxij[5]]=0;
-					chessboard[maxcompi][maxcompj]=2;
-				}
-			else if(maxppall>=100000)
-				{
-					chessboard[maxij[0]][maxij[1]]=0;
-					chessboard[maxij[2]][maxij[3]]=0;
-					chessboard[maxij[4]][maxij[5]]=0;
-					chessboard[maxppi][maxppj]=2;
-				}
-			else if(maxcompall>=20000)
-				{
-					chessboard[maxij[0]][maxij[1]]=0;
-					chessboard[maxij[2]][maxij[3]]=0;
-					chessboard[maxij[4]][maxij[5]]=0;
-					chessboard[maxcompi][maxcompj]=2;
-				}
-			else if(maxppall>=20000)
-				{
-					chessboard[maxij[0]][maxij[1]]=0;
-					chessboard[maxij[2]][maxij[3]]=0;
-					chessboard[maxij[4]][maxij[5]]=0;
-					chessboard[maxppi][maxppj]=2;
-				}
-			else
-				{
-					chessboard[maxij[0]][maxij[1]]=0;
-					chessboard[maxij[2]][maxij[3]]=0;
-					chessboard[maxij[4]][maxij[5]]=0;
-					chessboard[maxcompi][maxcompj]=2;
-				}
-			
+			who_play(chessboard);
 			printf_chessboard();
-				
-			for(i=0;i<6;i++)
-			{
-				maxij[i]=0;
-			}
-				
-			//globle=0;
 			
-			for(i=0;i<15;i++)
-			{
-				for(j=0;j<15;j++)
-				{
-					pepole_weight[i][j]=0;
-					company_wight[i][j]=0;
-				}
-			}	
-				
 			if (whowin(chessboard,i,j,2)==1)
 			{
-				printf("computer win");
+				printf("compter win\n");
 				return 0;
 			}
+			
 		}
-					
 		total_count++;
 		
 		if(total_count==224)
@@ -549,7 +424,7 @@ main(void)
 			printf("no place to paly ,game over , draw");
 			return 0;
 		}
-		
+		//sleep(3);
 	}
 
 }
