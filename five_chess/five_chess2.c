@@ -448,12 +448,12 @@ main(int who)
 	int total_count;
 	//int count=0;
 	int maxcompall,maxcompi,maxcompj,maxppall,maxppi,maxppj;
-	FILE *fp2;
+	//FILE *fp2;
 	
 	
 	
-	chessboard[8][7]=1;
-	chessboard[7][8]=2;
+	//chessboard[8][7]=1;
+	//chessboard[7][8]=2;
 	printf_chessboard();
 	
 	
@@ -463,9 +463,9 @@ main(int who)
 	if(who==1)
 		//...
 		{
-			total_count=1;
+			total_count=3;
 		}
-	else
+	else if(who==2)
 		//....
 		{
 			total_count=2;
@@ -475,18 +475,18 @@ main(int who)
 	{
 		if(total_count%2==1)
 		{
-			//printf("pepole play:\n");
-			//......
-			//printf("put the chess\n");	
+			printf("pepole play:\n");
 			do
 			{
-				//scanf("%d %d\n",&i,&j);				
+				scanf("%d %d",&i,&j);				
+				/*
 				if((fp2=fopen("/opt/test/log.txt","r"))!= NULL)
 						{
 							fscanf(fp2, "%d", &i); 
 							fscanf(fp2, "%d", &j);
 						}
 				fclose(fp2);
+				*/
 			}while(chessboard[i][j]==1 || chessboard[i][j]==2);
 				
 			chessboard[i][j]=1;
@@ -501,10 +501,18 @@ main(int who)
 		}
 		else
 		{
-			//printf("computer play\n");
+			printf("computer play\n");
 			//count=0;
 			//while(count<3)
 			//	{
+			if(total_count==2)
+				{
+					chessboard[7][8]=2;
+					printf_chessboard();
+					printf("the computer play in : %d %d\n",7,8);
+				}
+			if(total_count!=2)
+				{
 			globle=0;
 			who_play(chessboard,2,1);//.......,...1.........
 			//globle=globle+1;
@@ -559,13 +567,15 @@ main(int who)
 					chessboard[maxij[8]][maxij[9]]=0;
 					chessboard[maxcompi][maxcompj]=2;
 					
+					printf("the computer play in : %d %d\n",maxcompi,maxcompj);
+					/*
 					fp2=fopen("/opt/test/log2.txt","w+");
 					if(fp2!=NULL)
 						{
 							fprintf(fp2,"%d %d\n",maxcompi,maxcompj);
 						}
 						fclose(fp2);
-					/*
+					
 					for(i=0;i<10;i++)
 					{
 						printf("debug information calculate the place %d\n",maxij[i]);
@@ -589,14 +599,15 @@ main(int who)
 					chessboard[maxij[6]][maxij[7]]=0;
 					chessboard[maxij[8]][maxij[9]]=0;
 					chessboard[maxppi][maxppj]=2;
-					
+					printf("the computer play in : %d %d\n",maxppi,maxppj);
+					/*
 					fp2=fopen("/opt/test/log2.txt","w+");
 					if(fp2!=NULL)
 						{
 							fprintf(fp2,"%d %d\n",maxcompi,maxcompj);
 						}
 						fclose(fp2);
-					/*
+					
 					for(i=0;i<10;i++)
 					{
 						printf("debug information calculate the place %d\n",maxij[i]);
@@ -620,7 +631,8 @@ main(int who)
 					chessboard[maxij[6]][maxij[7]]=0;
 					chessboard[maxij[8]][maxij[9]]=0;
 					chessboard[maxcompi][maxcompj]=2;
-					
+					printf("the computer play in : %d %d\n",maxcompi,maxcompj);
+					/*
 					//fp=fopen("/opt/test/log.txt","w");
 					fp2=fopen("/opt/test/log2.txt","w+");
 					if(fp2!=NULL)
@@ -628,7 +640,7 @@ main(int who)
 							fprintf(fp2,"%d %d\n",maxcompi,maxcompj);
 						}
 						fclose(fp2);
-					/*
+					
 					for(i=0;i<10;i++)
 					{
 						printf("debug information calculate the place %d\n",maxij[i]);
@@ -651,7 +663,8 @@ main(int who)
 					chessboard[maxij[6]][maxij[7]]=0;
 					chessboard[maxij[8]][maxij[9]]=0;
 					chessboard[maxppi][maxppj]=2;
-					
+					printf("the computer play in : %d %d\n",maxppi,maxppj);
+					/*
 					fp2=fopen("/opt/test/log2.txt","w+");
 					if(fp2!=NULL)
 						{
@@ -681,7 +694,8 @@ main(int who)
 					chessboard[maxij[6]][maxij[7]]=0;
 					chessboard[maxij[8]][maxij[9]]=0;
 					chessboard[maxcompi][maxcompj]=2;
-					
+					printf("the computer play in : %d %d\n",maxcompi,maxcompj);
+					/*
 					fp2=fopen("/opt/test/log2.txt","w+");
 					if(fp2!=NULL)
 						{
@@ -724,15 +738,15 @@ main(int who)
 			
 			
 		}
-					
+	}			
 		total_count++;
 		
 		if(total_count==224)
 		{
-			printf("no place to paly ,game over , draw");
+			printf("no place to paly ,game over");
 			return 0;
 		}
-		sleep(3);
+		//sleep(3);
 	}
 
 }
