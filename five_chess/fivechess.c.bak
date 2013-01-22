@@ -827,7 +827,7 @@ main(int how,char* who[])
 		}
 	
 	
-	step=1;
+	step=0;
 	printf("debug information %d,%d\n",total_count,total_count%2);
 	while(1)
 	{
