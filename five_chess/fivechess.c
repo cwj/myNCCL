@@ -282,9 +282,9 @@ int calculate(int one_direction_count,int second_diection_count,int k,int i,int 
 			if(one_direction[0]==0 && two_direction[0]==0)
 				{
 					chessboard[pointonei][pointonej]=2;
-					fprintf(stdout, "step %d : %d %d\n", step++, pointonei, pointonej);
-					step++;
-					fflush(stdout);
+					//fprintf(stdout, "step %d : %d %d\n", step++, pointonei, pointonej);
+					//step++;
+					//fflush(stdout);
 					
 					flag= 2;
 					return flag;
@@ -295,9 +295,9 @@ int calculate(int one_direction_count,int second_diection_count,int k,int i,int 
 					if(one_direction[0]==0)
 						{
 							chessboard[pointonei][pointonej]=2;
-							fprintf(stdout, "step %d : %d %d\n", step++, pointonei, pointonej);
-							step++;
-							fflush(stdout);
+							//fprintf(stdout, "step %d : %d %d\n", step++, pointonei, pointonej);
+							//step++;
+							//fflush(stdout);
 							flag= 2;
 							return flag;
 							break;
@@ -306,9 +306,9 @@ int calculate(int one_direction_count,int second_diection_count,int k,int i,int 
 				 if(two_direction[0]==0)
 					{
 						chessboard[pointtwoi][pointtwoj]=2;
-						fprintf(stdout, "step %d : %d %d\n", step++, pointtwoi, pointtwoj);
-						step++;
-						fflush(stdout);
+						//fprintf(stdout, "step %d : %d %d\n", step++, pointtwoi, pointtwoj);
+						//step++;
+						//fflush(stdout);
 						flag= 2;
 						return flag;
 						break;
@@ -332,9 +332,9 @@ int calculate(int one_direction_count,int second_diection_count,int k,int i,int 
 			if(one_direction[0]==0 && two_direction[0]==0 && two_direction[1]==k)
 			{//*_***_
 				chessboard[pointtwoi][pointtwoj]=2;
-				fprintf(stdout, "step %d : %d %d\n", step++, pointtwoi, pointtwoj);
-				step++;
-				fflush(stdout);
+				//fprintf(stdout, "step %d : %d %d\n", step++, pointtwoi, pointtwoj);
+				//step++;
+				//fflush(stdout);
 				flag= 2;
 				return flag;
 				break;
@@ -366,9 +366,11 @@ int calculate(int one_direction_count,int second_diection_count,int k,int i,int 
 			if(one_direction[0]==0 && two_direction[0]==0 && one_direction[1]==k && one_direction[2]==k)
 				{//_**_**
 					chessboard[pointonei][pointonej]=2;
+					/*
 					fprintf(stdout, "step %d : %d %d\n", step++, pointonei, pointonej);
 					step++;
 					fflush(stdout);
+					*/
 					flag= 2;
 					break;
 				}
@@ -377,9 +379,9 @@ int calculate(int one_direction_count,int second_diection_count,int k,int i,int 
 			if(one_direction[0]==0 && two_direction[0]==0 && two_direction[1]==k && two_direction[2]==k)
 				{//**_**_
 					chessboard[pointtwoi][pointtwoj]=2;
-					fprintf(stdout, "step %d : %d %d\n", step++, pointtwoi, pointtwoj);
-					step++;
-					fflush(stdout);
+					//fprintf(stdout, "step %d : %d %d\n", step++, pointtwoi, pointtwoj);
+					//step++;
+					//fflush(stdout);
 					flag= 2;
 					break;
 				}
@@ -388,9 +390,9 @@ int calculate(int one_direction_count,int second_diection_count,int k,int i,int 
 			if(one_direction[0]==0 && two_direction[0]==0 && one_direction[1]==k && one_direction[2]==0)
 				{//_**_*_
 					chessboard[pointonei][pointonej]=2;
-					fprintf(stdout, "step %d : %d %d\n", step++, pointonei, pointonej);
-					step++;
-					fflush(stdout);
+					//fprintf(stdout, "step %d : %d %d\n", step++, pointonei, pointonej);
+					//step++;
+					//fflush(stdout);
 					flag= 2;
 					break;
 				}
@@ -399,9 +401,9 @@ int calculate(int one_direction_count,int second_diection_count,int k,int i,int 
 			if(one_direction[0]==0 && two_direction[0]==0 && two_direction[1]==k && two_direction[2]==0)
 				{//_*_**_
 					chessboard[pointtwoi][pointtwoj]=2;
-					fprintf(stdout, "step %d : %d %d\n", step++, pointtwoi, pointtwoj);
-					step++;
-					fflush(stdout);
+					//fprintf(stdout, "step %d : %d %d\n", step++, pointtwoi, pointtwoj);
+					//step++;
+					//fflush(stdout);
 					flag= 2;
 					break;
 				}
@@ -410,9 +412,9 @@ int calculate(int one_direction_count,int second_diection_count,int k,int i,int 
 				if(one_direction[0]==0 && two_direction[0]==0 && one_direction[1]==k && one_direction[2]==k && one_direction[3]==k )
 				{//_*_**_
 					chessboard[pointonei][pointonej]=2;
-					fprintf(stdout, "step %d : %d %d\n", step++, pointonei, pointonej);
-					step++;
-					fflush(stdout);
+					//fprintf(stdout, "step %d : %d %d\n", step++, pointonei, pointonej);
+					//step++;
+					//fflush(stdout);
 					flag= 2;
 					break;
 				}
@@ -421,9 +423,9 @@ int calculate(int one_direction_count,int second_diection_count,int k,int i,int 
 			if(one_direction[0]==0 && two_direction[0]==0 && two_direction[1]==k && two_direction[2]==k && two_direction[3]==k)
 				{//_*_**_
 					chessboard[pointtwoi][pointtwoj]=2;
-					fprintf(stdout, "step %d : %d %d\n", step++, pointtwoi, pointtwoj);
-					step++;
-					fflush(stdout);
+					//fprintf(stdout, "step %d : %d %d\n", step++, pointtwoi, pointtwoj);
+					//step++;
+					//fflush(stdout);
 					flag= 2;
 					break;
 				}
@@ -431,9 +433,11 @@ int calculate(int one_direction_count,int second_diection_count,int k,int i,int 
 				if(one_direction[0]==0 && two_direction[0]==0 && one_direction[1]==k && one_direction[2]==k && one_direction[3]==0 )
 				{//_*_**_
 					chessboard[pointonei][pointonej]=2;
+					/*
 					fprintf(stdout, "step %d : %d %d\n", step++, pointonei, pointonej);
 					step++;
 					fflush(stdout);
+					*/
 					flag= 2;
 					break;
 				}
@@ -442,9 +446,11 @@ int calculate(int one_direction_count,int second_diection_count,int k,int i,int 
 			if(one_direction[0]==0 && two_direction[0]==0 && two_direction[1]==k && two_direction[2]==k && two_direction[3]==0)
 				{//_*_**_
 					chessboard[pointtwoi][pointtwoj]=2;
+					/*
 					fprintf(stdout, "step %d : %d %d\n", step++, pointtwoi, pointtwoj);
 					step++;
 					fflush(stdout);
+					*/
 					flag= 2;
 					break;
 				}
@@ -693,9 +699,11 @@ void attack(int attack_chess[15][15])
 		}
 										
 	attack_chess[maxi][maxj]=2;
+	/*
 	fprintf(stdout, "step %d : %d %d\n", step++, maxi, maxj);
 	step++;
 	fflush(stdout);	
+	*/
 	if (whowin(chessboard,maxi,maxj,2)==1)
 		{
 			printf("compter win\n");
@@ -728,9 +736,11 @@ void who_play(int analysis_chess[15][15])
 
 							if(one_count+two_count==4)
 								{
+									/*
 									fprintf(stdout, "step %d : %d %d\n", step++, i, j);
 									step++;
 									fflush(stdout);	
+									*/
 									printf_chessboard();
 									printf("computer win\n");
 									exit (0);
@@ -743,9 +753,11 @@ void who_play(int analysis_chess[15][15])
 
 							if(one_count+two_count==4)
 								{
+									/*
 									fprintf(stdout, "step %d : %d %d\n", step++, i, j);
 									step++;
 									fflush(stdout);
+									*/
 									printf_chessboard();
 									printf("computer win\n");
 									exit (0);
@@ -758,9 +770,11 @@ void who_play(int analysis_chess[15][15])
 
 							if(one_count+two_count==4)
 								{
+									/*
 									fprintf(stdout, "step %d : %d %d\n", step++, i, j);
 									step++;
 									fflush(stdout);
+									*/
 									printf_chessboard();
 									printf("computer win\n");
 									exit (0);
@@ -773,9 +787,11 @@ void who_play(int analysis_chess[15][15])
 
 							if(one_count+two_count==4)
 								{
+									/*
 									fprintf(stdout, "step %d : %d %d\n", step++, i, j);
 									step++;
 									fflush(stdout);
+									*/
 									printf_chessboard();
 									printf("computer win\n");
 									exit (0);
@@ -861,20 +877,23 @@ main(int how,char* who[])
 			if(total_count==2)
 				{
 					chessboard[7][7]=2;
+					/*
 					fprintf(stdout, "step %d : %d %d\n", step++, 7, 7);
 					step++;
 					fflush(stdout);
+					*/
 				}
-				/*
 			else if(total_count==4)
 				{
 					chessboard[ppi][ppj+1]=2;
 					printf("debug information");
+					/*
 					fprintf(stdout, "step %d : %d %d\n", step++, ppi, ppj+1);
 					step++;
 					fflush(stdout);
+					*/
 				}
-				*/
+				
 				else
 					{
 						who_play(chessboard);
